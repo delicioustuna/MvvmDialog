@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ReactiveUI;
+using Splat;
 using System.Windows;
 
 namespace MvvmDialog.Views
@@ -13,5 +9,12 @@ namespace MvvmDialog.Views
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            // Regist ViewModels
+            Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainWindow).Assembly);
+
+            base.OnStartup(e);
+        }
     }
 }
